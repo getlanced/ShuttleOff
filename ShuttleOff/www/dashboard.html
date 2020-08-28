@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="content">
+        <header class="app-header">
+            <div class="container">
+                <i class="fas fa-bars" onclick = "openNav()" style = "cursor: pointer;"> Menu</i>
+                <img src="images/logo1.png" alt="" class="logo">
+            </div>
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times</a>
+                <a href="#" onclick="closeNav()"><i class = "fas fa-search-location"> </i> <span>Play</span></a>
+                <a href="#"><i class="fas fa-user-circle"></i> <span>Profile</span></a>
+                <a href="#"><i class = "far fa-calendar-alt"></i><span>Schedules</span></a>
+                <a href="index.html"><i class = "fas fa-power-off"></i> <span>Log Out</span></a>
+            </div>
+        </header>
+        <div id = "proc_nav" class="proceed_nav">
+            <div class="proceed_nav_wrapper">
+                <div class="proc_header">
+                    <div class="proc_header_container">
+                        <i class="fas fa-arrow-left" onclick="closeProcTab()"></i>
+                        <h2>Results</h2>
+                        <i onclick = "openFilterTab()" class="fas fa-filter"></i>
+                    </div>
+                </div>
+                <div class="proc_nav_content">
+                    <div class="proc_nav_content_wrapper">
+                        <div class="place">
+                            <img src="../www/images/bc1.jpg" alt="">
+                            <h3>Name</h3>
+                        </div>
+                        <div class="place">
+                            <img src="../www/images/bc1.jpg" alt="">
+                            <h3>Name</h3>
+                        </div>
+                        <div class="place">
+                            <img src="../www/images/bc1.jpg" alt="">
+                            <h3>Name</h3>
+                        </div>
+                        <div class="place">
+                            <img src="../www/images/bc1.jpg" alt="">
+                            <h3>Name</h3>
+                        </div>
+                        <div class="place">
+                            <img src="../www/images/bc1.jpg" alt="">
+                            <h3>Name</h3>
+                        </div>
+                        <div class="place">
+                            <img src="../www/images/bc1.jpg" alt="">
+                            <h3>Name</h3>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id = "filter_sidebar" class="filter_sidebar">
+            <div class="filter_wrapper">
+                <div class="filter_header">
+                    <div class="filter_header_container">
+                        <h3 onclick = "closeFilterTab()">Cancel</h3>
+                    </div>
+                </div>
+                <div class="filter_content">
+                    <div class="filter_content_wrapper">
+                        <div class = "search_bar">
+                                <input id ="search_text" type="text" placeholder=" Province, City, Region.." name="search">
+                        </div>
+                        <div class="filter_items">
+                            <h3 id = "description" >Sort By</h3>
+                            <ul>
+                                <li onclick = "sort_selection_has_focused()" id = "province" tabindex="1">
+                                    <i class="fas fa-home"></i>
+                                    <h3>Province</h3>
+                                    
+                                </li>
+                                <li onclick = "sort_selection_has_focused()" id = "city" tabindex="2">
+                                    <i class="fas fa-city"></i>
+                                    <h3>City</h3>
+                                </li>
+                                <li onclick = "sort_selection_has_focused()" id = "region" tabindex="3" >
+                                    <i class="fas fa-map"></i>
+                                    <h3>Region</h3>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <div class="content_wrapper">
+            <div class="subheader">
+                <div class="logo-mid">
+                    <i class = "fas fa-search-location"> </i>
+                    <h2>Find a Court</h2>
+                </div>
+                <div class="choice-disp">
+                    <div class="wrapper">
+                        <div id = "time-disp">
+                            <h3>TIME</h3>
+                            <h4 id = "time_now" >02:46</h4>
+                        </div>
+                        <div id = "cal-disp">
+                            <h3 id = "day_now" >WED</h3>
+                            <h4 id = "date_now">AUG 28</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="slideshow-wrapper">
+                    <div class="slideshow-container">
+                        <div class="slideshow-item fade">
+                            <img src="../www/images/bc1.jpg " alt="">
+                        </div>
+                        <div class="slideshow-item fade">
+                            <img src="../www/images/bc2.jpg " alt="">
+                        </div>
+                        <div class="slideshow-item fade">
+                            <img src="../www/images/bc3.jpg " alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="criteria-band">
+                <div class="wrapper">
+                    <div class ="crit-content" id = "cal-band" >
+                        <input type="date" id="date">
+                    </div>
+                    <div class ="crit-content" id = "time-length-band">
+                        <div class="caret-container">
+                            <i class="fas fa-caret-left" style = "cursor: pointer;" onclick="dec_time_length()"></i>
+                            <h4 id = "time_length">1</h4>
+                            <i class = "fas fa-caret-right" style = "cursor: pointer;" onclick="inc_time_length()"></i>
+                        </div>    
+                        <h4>HOURS</h4>
+                    </div>
+                    <div class ="crit-content" id = "time-band">
+                        <div class="wrapper">
+                            <div class="caret-container">
+                                <i class="fas fa-caret-left" style = "cursor: pointer;" onclick="dec_time_start()" ></i>
+                                <h4 id = "time">1</h4>
+                                <i class = "fas fa-caret-right" style = "cursor: pointer;" onclick="inc_time_start()" ></i>
+                            </div>
+                            <h4>TIME START</h4> 
+                        </div> 
+                        <div class = "am-pm-wrapper">
+                            <label class="switch">
+                                <input type="checkbox" id="togBtn">
+                                <div class="slider round">
+                                    <span class="am">AM</span>
+                                    <span class="pm">PM</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="crit-content">
+                        <div class="proceed_btn_wrapper" onclick="openProcTab()">
+                            <div class = "proceed_btn">
+                                Proceed
+                                <i class="far fa-check-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/fec759ef55.js" crossorigin="anonymous"></script>
+    <script src="../www/scripts/dashboard.js"></script>
+</body>
+</html>
