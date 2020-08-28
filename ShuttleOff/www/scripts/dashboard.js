@@ -107,3 +107,45 @@ function proc_btn_clicked(){
     //get forms
     //open proc nav
 }
+
+/*const place = document.querySelectorAll(".place");
+for (let i = 0; i<place.length; i++)
+{
+    place[i].addEventListener("mousedown", function(){
+        //dummy element
+        var x = document.getElementById("place1");
+        //check element focus
+        if(document.activeElement.className == "place")
+        {
+            var y = document.getElementById("loc_name");
+            //replace text of y from class's first element text
+            y.textContent = "Name: " + document.activeElement.children[1].textContent;
+            openDetModal();
+        };
+})
+}*/
+
+//temporary solution of above
+function checkFocusedPlace (){
+    var x = document.getElementById("place1");
+        //check element focus
+        if(document.activeElement.className == "place")
+        {
+            var y = document.getElementById("loc_name");
+            //replace text of y from class's first element text
+            y.textContent = "Name: " + document.activeElement.children[1].textContent;
+            openDetModal();
+        };
+}
+
+function openDetModal(){
+    var x = document.getElementById("modal-result-pop-up");
+    x.style.opacity = "1";
+    x.style.display = "flex";
+}
+
+function closeDetModal(){
+    var x = document.getElementById("modal-result-pop-up");
+    x.style.opacity = "0";
+    x.style.display = "none";
+}

@@ -424,9 +424,14 @@ input:checked + .slider .pm{
     transition-duration: .4s;
 }
 
+.proceed_btn:hover
+{
+    background-color: #18b466;
+}
+
 .proceed_btn:active
 {
-    background-color: #19af64;
+    background-color: #20d47a;
 }
 
 .proceed_btn:active:after
@@ -481,14 +486,14 @@ input:checked + .slider .pm{
     overflow:scroll;
        
 }
-.proc_nav_content_wrapper
+#proc_nav_content_wrapper
 {
     position: absolute;
     height: 100%;
     width: 100%;
     max-width: 1000px;
 }
-.proc_nav_content_wrapper .place
+#proc_nav_content_wrapper .place
 {
     display: flex;
     flex-direction: column;
@@ -499,11 +504,11 @@ input:checked + .slider .pm{
     color:white;
     position: relative;
     transition: 0.5s;
-    cursor: pointer;
 }
 
 .place h3::after
 {
+    cursor: pointer;
     position: absolute;
     content:'\View Details';
     opacity: 0;
@@ -522,13 +527,13 @@ input:checked + .slider .pm{
     right: 0;
 }
 
-.proc_nav_content_wrapper .place img
+#proc_nav_content_wrapper .place img
 {
     opacity: 0.4;
     height: 20vh;
     width: 100%;   
 }
-.proc_nav_content_wrapper .place h3
+#proc_nav_content_wrapper .place h3
 {
     position: absolute;
     display: flex;
@@ -669,4 +674,176 @@ input:checked + .slider .pm{
 .filter_items ul li i{
     font-size: 26px;
     color: var(--primary-color);
+}
+
+/*Pop up modal*/
+.modal-result-pop-up
+{
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.329);
+
+    opacity: 0;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    transition: opacity 1s;
+}
+.mod-wrapper
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 80%;
+    height: 80%;
+    background-color: #006666;
+    flex-direction: column;
+    transition: 0.2s;
+    max-width: 450px;
+}
+.mod-header
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10%; /*Header space*/
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.mod-header h2
+{
+    color: whitesmoke;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.mod-header h2:hover
+{
+    opacity: 0.7;
+}
+
+.mod-content
+{
+    position: absolute;
+    top: 10%; /*Header space*/
+    left: 0;
+    width: 100%;
+    height: 90%; /*content space*/
+    background-color: var(--secondary-color);
+}
+
+.mod-content .picture
+{
+    position: absolute;
+    width: 100%;
+    height: 40%; /*picture space*/
+    background-color: beige;
+}
+
+.picture_container
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(129, 184, 151, 0.52), rgba(10, 107, 62, 0.73));
+}
+
+.mod-content .picture img
+{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.7;
+}
+
+#mod-det
+{
+    position: absolute;
+    top: 40%; /*picture space*/
+    width: 100%;
+    height: 60%; /*Detail space*/
+    background: var(--secondary-color);
+}
+
+#mod-det
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#mod-det .loc_container
+{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+#mod-det .loc_container h3
+{
+    color: var(--primary-color);
+    padding: 5px 0 5px 0;
+}
+
+#mod-det .loc_container .mod-button
+{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+#mod-det .loc_container .mod-button .mod-btn-container
+{
+    width: 90%;
+    height: 80%;
+    position: absolute;
+    background-color:  #19af64;
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    max-height: 70px;
+    transition: 0.5s;
+}
+
+#mod-det .loc_container .mod-button .mod-btn-container:hover
+{
+    background-color:  #18c26d;
+}
+
+#mod-det .loc_container .mod-button .mod-btn-container:active
+{
+    background-color: #1cdf7d;
+}
+
+#mod-det .loc_container .mod-button .mod-btn-container i
+{
+    color: whitesmoke;
+}
+
+#mod-det .loc_container .mod-button .mod-btn-container h3
+{
+    color: whitesmoke;
 }

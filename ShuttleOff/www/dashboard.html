@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,31 +32,30 @@
                     </div>
                 </div>
                 <div class="proc_nav_content">
-                    <div class="proc_nav_content_wrapper">
-                        <div class="place">
+                    <!-- The elements below must be appended dynamically. 
+                    Currently showing how it would look like. 
+                    Requirements id = place(index + 1), onclick event, tab index-->
+                    <div id="proc_nav_content_wrapper">
+                        <div onclick ="checkFocusedPlace()" tabindex = "0" id = "place1" class="place">
                             <img src="../www/images/bc1.jpg" alt="">
-                            <h3>Name</h3>
+                            <h3>Em's Court</h3>
                         </div>
-                        <div class="place">
-                            <img src="../www/images/bc1.jpg" alt="">
-                            <h3>Name</h3>
+                        <div onclick ="checkFocusedPlace()" tabindex = "1" id = "place2" class="place">
+                            <img src="../www/images/bc2.jpg" alt="">
+                            <h3>Li's Court</h3>
                         </div>
-                        <div class="place">
-                            <img src="../www/images/bc1.jpg" alt="">
-                            <h3>Name</h3>
+                        <div onclick ="checkFocusedPlace()" tabindex = "2" id = "place3" class="place">
+                            <img src="../www/images/bc3.jpg" alt="">
+                            <h3>El's Court</h3>
                         </div>
-                        <div class="place">
-                            <img src="../www/images/bc1.jpg" alt="">
-                            <h3>Name</h3>
+                        <div onclick ="checkFocusedPlace()" tabindex = "3" id = "place4" class="place">
+                            <img src="../www/images/bc2.jpg" alt="">
+                            <h3>Po's Court</h3>
                         </div>
-                        <div class="place">
+                        <div onclick ="checkFocusedPlace()" tabindex = "4" id = "place5" class="place">
                             <img src="../www/images/bc1.jpg" alt="">
-                            <h3>Name</h3>
-                        </div>
-                        <div class="place">
-                            <img src="../www/images/bc1.jpg" alt="">
-                            <h3>Name</h3>
-                        </div>                        
+                            <h3>Ko's Court</h3>
+                        </div>                       
                     </div>
                 </div>
             </div>
@@ -164,6 +163,38 @@
                             <div class = "proceed_btn">
                                 Proceed
                                 <i class="far fa-check-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modals-->
+    <div id = "modal-result-pop-up" class="modal-result-pop-up">
+        <div class="mod-wrapper">
+            <div class="mod-header">
+                <h2 onclick="closeDetModal()">Cancel</h2>
+            </div>
+            <div class="mod-content">
+                <div class="picture">
+                    <div class="picture_container">
+                        <img id = "loc_pic" src="./images/bc1.jpg" alt="">
+                    </div>
+                </div>
+                <div class = "mod-det" id = "mod-det" >
+                    <div class="loc_container">
+                        <h3 id = "loc_name">Name: </h3>
+                        <h3 id = "loc_owner">Owner: </h3>
+                        <h3 id = "loc_reg">Region: </h3>
+                        <h3 id = "loc_city">City: </h3>
+                        <h3 id = "loc_prov">Province: </h3>
+                        <h3 id = "loc_add">Address Here </h3>
+                        <div class="mod-button">
+                            <div class="mod-btn-container">
+                                <h3>Create Reservation</h3>
+                                <i class="fas fa-check"></i>
                             </div>
                         </div>
                     </div>
