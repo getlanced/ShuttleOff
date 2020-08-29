@@ -175,7 +175,8 @@
     <div id = "modal-result-pop-up" class="modal-result-pop-up">
         <div class="mod-wrapper">
             <div class="mod-header">
-                <h2 onclick="closeDetModal()">Cancel</h2>
+                <!-- <h2 onclick="closeDetModal()">Cancel</h2> -->
+                <h2>Create Reservation</h2>
             </div>
             <div class="mod-content">
                 <div class="picture">
@@ -185,16 +186,22 @@
                 </div>
                 <div class = "mod-det" id = "mod-det" >
                     <div class="loc_container">
-                        <h3 id = "loc_name">Name: </h3>
-                        <h3 id = "loc_owner">Owner: </h3>
-                        <h3 id = "loc_reg">Region: </h3>
-                        <h3 id = "loc_city">City: </h3>
-                        <h3 id = "loc_prov">Province: </h3>
-                        <h3 id = "loc_add">Address Here </h3>
+                        <div id="det_wrap">
+                            <h3 id = "loc_name">Name: </h3>
+                            <h3 id = "loc_owner">Owner: </h3>
+                            <h3 id = "loc_reg">Region: </h3>
+                            <h3 id = "loc_city">City: </h3>
+                            <h3 id = "loc_prov">Province: </h3>
+                            <h3 id = "loc_add">Address Here </h3>
+                        </div>
                         <div class="mod-button">
                             <div class="mod-btn-container">
-                                <h3>Create Reservation</h3>
-                                <i class="fas fa-check"></i>
+                                <div class="btn_create_res">
+                                    <i class="fas fa-check"></i>    
+                                </div>
+                                <div onclick="closeDetModal()" class="btn_cancel_res">
+                                    <i class="fas fa-times"></i>
+                                </div>
                             </div>
                         </div>
                     </div>

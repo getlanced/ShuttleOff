@@ -157,7 +157,7 @@ function loadProcNavContent(){
 
     var parent = document.getElementById("proc_nav_content_wrapper");
     parent.innerHTML= "";
-
+    
     for (let i = 0; i< 5; i++ ){
         const newDiv = document.createElement("div");
         newDiv.tabIndex = i;
