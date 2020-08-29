@@ -66,6 +66,8 @@ function showDateTime(){
 }
 function openProcTab(){
     document.getElementById('proc_nav').style.width = "100%";
+    //tester
+    loadProcNavContent();
 }
 function closeProcTab(){
     document.getElementById('proc_nav').style.width = "0";
@@ -133,7 +135,7 @@ function checkFocusedPlace (){
         {
             var y = document.getElementById("loc_name");
             //replace text of y from class's first element text
-            y.textContent = "Name: " + document.activeElement.children[1].textContent;
+            y.textContent = document.activeElement.children[1].textContent;
             openDetModal();
         };
 }
@@ -148,4 +150,30 @@ function closeDetModal(){
     var x = document.getElementById("modal-result-pop-up");
     x.style.opacity = "0";
     x.style.display = "none";
+}
+
+//Create 5 for now
+function loadProcNavContent(){
+
+    var parent = document.getElementById("proc_nav_content_wrapper");
+    parent.innerHTML= "";
+
+    for (let i = 0; i< 5; i++ ){
+        const newDiv = document.createElement("div");
+        newDiv.tabIndex = i;
+        newDiv.id = "place" + i;
+        newDiv.className = "place";
+        newDiv.setAttribute("onclick", "checkFocusedPlace()");
+
+        const child1 = document.createElement("img");
+        child1.src = "../www/images/bc2.jpg";
+        const child2 = document.createElement("h3");
+        child2.textContent = "El" + i + " Court";
+        
+        newDiv.append(child1);
+        newDiv.append(child2);
+                
+        parent.append(newDiv);
+        
+    }
 }
