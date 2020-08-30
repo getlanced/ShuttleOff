@@ -255,8 +255,38 @@ body
     height: 100%;
     max-width: 500px;
     display: flex;
+    justify-content: center;
     align-items: center;
     padding: 12px;
+}
+
+#loc-band{
+    display: flex;
+    width: 70%;
+    height: 100%;
+    justify-content: center;
+    background-color: #88d3ac;
+    border-radius: 40px;
+    padding: 10px;
+}
+
+#loc-band i
+{
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+#loc-txtBox{
+    
+    border: none;
+    outline: none;
+    background-color: #88d3ac;
+    width: 100%;
+    height: 100%;
+    color: var(--primary-color);
+    margin-left: 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
 }
 .criteria-band .wrapper #cal-band
 {
@@ -269,12 +299,13 @@ body
     outline: none;
     border: none;
     background-color: var(--secondary-color);
-    padding: 16px;
+    padding: 5px;
 }
 .criteria-band .wrapper #time-length-band
 {
     display: flex;
     flex-direction: column;
+    padding: 5px;
 }
 
 .criteria-band .wrapper #time-length-band .caret-container
@@ -290,6 +321,7 @@ body
     width: 100%;
     align-content: center;
     justify-content: space-between;
+    padding: 5px;
 }
 .criteria-band .wrapper #time-band .wrapper
 {
@@ -412,18 +444,17 @@ input:checked + .slider .pm{
     display: flex;
     width: 70%;
     justify-content: space-evenly;
-    font-size: 32px;
+    font-size: 1.8rem;
     padding: 5px;
     color: whitesmoke;
     background-color: var(--primary-color);
     border-radius: 32px;
-    padding: 10px;
+    padding: 5px;
     cursor: pointer;
-
+    align-items: center;
     -webkit-transition-duration: .4s;
     transition-duration: .4s;
 }
-
 .proceed_btn:hover
 {
     background-color: #18b466;
@@ -492,6 +523,10 @@ input:checked + .slider .pm{
     height: 100%;
     width: 100%;
     max-width: 1000px;
+    color: var(--primary-color);
+}
+#proc_nav_content_wrapper #No_Results{
+    padding: 10px;
 }
 #proc_nav_content_wrapper .place
 {
@@ -503,6 +538,7 @@ input:checked + .slider .pm{
     background-size: cover;
     color:white;
     position: relative;
+    outline: none;
     transition: 0.5s;
 }
 
@@ -571,7 +607,7 @@ input:checked + .slider .pm{
 .filter_header_container
 {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     padding: 10px;
     color: whitesmoke;
@@ -579,8 +615,12 @@ input:checked + .slider .pm{
 
 .filter_header_container h3{
     cursor: pointer;
+    transition: 0.4s;
 }
-
+.filter_header_container h3:hover
+{
+    opacity: 0.6;
+}
 .filter_content{
     position:relative;
     height: 92%;
@@ -603,7 +643,18 @@ input:checked + .slider .pm{
     padding: 16px;
 }
 
-.filter_content_wrapper .search_bar{
+.search-bar-container{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+}
+.search-bar-container h3{
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: var(--primary-color);
+}
+.search_bar{
     position: relative;
     width: 100%;
     display: flex;
@@ -680,7 +731,8 @@ input:checked + .slider .pm{
 .modal-result-pop-up
 {
     position: absolute;
-    display: none;
+    visibility: hidden;
+    display: flex;
     top: 0;
     left: 0;
     justify-content: center;
@@ -689,11 +741,8 @@ input:checked + .slider .pm{
     height: 100%;
     z-index: 10;
     background-color: rgba(0, 0, 0, 0.329);
-
     opacity: 0;
-    -webkit-transition: opacity 1s;
-    -moz-transition: opacity 1s;
-    transition: opacity 1s;
+    transition: 0.4s;
 }
 .mod-wrapper
 {
@@ -705,7 +754,6 @@ input:checked + .slider .pm{
     height: 80%;
     background-color: #006666;
     flex-direction: column;
-    transition: 0.2s;
     max-width: 450px;
 }
 .mod-header
@@ -766,23 +814,17 @@ input:checked + .slider .pm{
     position: absolute;
     top: 40%; /*picture space*/
     width: 100%;
-    height: 60%; /*Detail space*/
+    height: 45%; /*Detail space*/
     background: var(--secondary-color);
 }
 
-#mod-det
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 #mod-det .loc_container
 {
+    position: absolute;
     display: flex;
     flex-direction: column;
-    position: relative;
-    align-items: center;
+    justify-content: flex-start;
+    top: 0;
     height: 100%;
     width: 100%;
 }
@@ -790,13 +832,13 @@ input:checked + .slider .pm{
 #det_wrap{
     position: absolute;
     width: 100%;
-    height:80%;
+    height:100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 }
-#mod-det #loc_name, #loc_owner,#loc_reg,#loc_city,#loc_prov,#loc_add 
+#mod-det #loc_name, #loc_owner,#loc_city,#loc_prov,#loc_add 
 {
     color: var(--primary-color);
     font-size: 5vw;
@@ -807,8 +849,8 @@ input:checked + .slider .pm{
 .mod-button
 {
     position: absolute;
-    top: 80%;
-    height: 20%;
+    top: 85%;
+    height: 15%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -828,37 +870,17 @@ input:checked + .slider .pm{
     max-height: 70px;
 }
 
-/* #mod-det .loc_container .mod-button .mod-btn-container:hover
-{
-    background-color:  #18c26d;
-}
-
-#mod-det .loc_container .mod-button .mod-btn-container:active
-{
-    background-color: #1cdf7d;
-} */
-
-/* #mod-det .loc_container .mod-button .mod-btn-container i
-{
-    color: whitesmoke;
-}
-
-#mod-det .loc_container .mod-button .mod-btn-container h3
-{
-    color: whitesmoke;
-} */
-
 .btn_create_res{
     display: flex;
     height: 100%;
-    width: 50%;
+    width: 40%;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     background-color:  #19af64;
     color: whitesmoke; 
     padding: 5px;
     border-radius: 10px;
-    margin: 5px;
+
     transition: 0.5s;
     cursor: pointer;
 }
@@ -878,15 +900,15 @@ input:checked + .slider .pm{
 
 .btn_cancel_res{
     display: flex;
-    width:50%;
+    width:40%;
     height: 100%;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     background-color: rgb(255, 44, 44);
     color: whitesmoke;
     padding: 5px;
     border-radius: 10px;
-    margin: 5px;
+    margin: 0.7rem;
     transition:0.5s;
     cursor: pointer;
 }
@@ -903,6 +925,34 @@ input:checked + .slider .pm{
     background-color:rgb(255, 20, 20);
 }
 
+.btn_review{
+    width: 20%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: .5s;
+}
+.btn_review:hover {
+    background-color: #c5dfdf;
+}
+
+.btn_review:active{
+    background-color: #aed4d4;
+}
+.btn_review p {
+    font-size: 0.7rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+}
+.btn_review i {
+    font-size: 1.5rem;
+}
 /*Prevent fonts and blocks from breaking*/
 
 @media all and (min-width: 430px) 
@@ -919,9 +969,62 @@ input:checked + .slider .pm{
     }
 }
 
-@media all and (max-aspect-ratio:4/5) and (max-width: 430px)
-{
-    #mod-det #loc_name, #loc_owner,#loc_reg,#loc_city,#loc_prov,#loc_add{
-        font-size: 15px;
-    }
+.review-container{
+    position: absolute;
+    background-color: var(--secondary-color);
+    top: 40%;
+    height: 45%;
+    width: 0%;
+    z-index: 2;
+    overflow: scroll;
+    transition: 0.4s;
+}
+
+.review-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem;
+}
+.review-header h3{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.review-header p{
+    font-size: 0.9rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.review-wrapper{
+    position: relative;
+}
+
+.review-content{
+    margin: 0 0.5rem 0.5rem 0.5rem; 
+}
+
+.star-wrap i{
+    font-size:0.6rem;
+    margin-right: 0.24rem;
+    color: var(--primary-color);
+}
+
+.feedback-container{
+    margin-right: 3rem;
+}
+.feedback-container h3{
+    font-size: 0.9rem;
+}
+
+.feedback-container h5{
+    font-size: 0.85rem;
+}
+
+.feedback-container p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: left;
+    font-size: 0.78rem;
+    color: #066b6b;
 }

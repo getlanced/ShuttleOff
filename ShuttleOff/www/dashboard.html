@@ -36,26 +36,11 @@
                     Currently showing how it would look like. 
                     Requirements id = place(index + 1), onclick event, tab index-->
                     <div id="proc_nav_content_wrapper">
+                        <h3 id = "No_Results">No Results</h3>
                         <!-- <div onclick ="checkFocusedPlace()" tabindex = "0" id = "place1" class="place">
                             <img src="../www/images/bc1.jpg" alt="">
                             <h3>Em's Court</h3>
-                        </div>
-                        <div onclick ="checkFocusedPlace()" tabindex = "1" id = "place2" class="place">
-                            <img src="../www/images/bc2.jpg" alt="">
-                            <h3>Li's Court</h3>
-                        </div>
-                        <div onclick ="checkFocusedPlace()" tabindex = "2" id = "place3" class="place">
-                            <img src="../www/images/bc3.jpg" alt="">
-                            <h3>El's Court</h3>
-                        </div>
-                        <div onclick ="checkFocusedPlace()" tabindex = "3" id = "place4" class="place">
-                            <img src="../www/images/bc2.jpg" alt="">
-                            <h3>Po's Court</h3>
-                        </div>
-                        <div onclick ="checkFocusedPlace()" tabindex = "4" id = "place5" class="place">
-                            <img src="../www/images/bc1.jpg" alt="">
-                            <h3>Ko's Court</h3>
-                        </div>                        -->
+                        </div>-->
                     </div>
                 </div>
             </div>
@@ -65,28 +50,32 @@
                 <div class="filter_header">
                     <div class="filter_header_container">
                         <h3 onclick = "closeFilterTab()">Cancel</h3>
+                        <h3 onclick = "sort_selection_has_focused()">Apply</h3>
                     </div>
                 </div>
                 <div class="filter_content">
                     <div class="filter_content_wrapper">
-                        <div class = "search_bar">
-                                <input id ="search_text" type="text" placeholder=" Province, City, Region.." name="search">
+                        
+                        <div class="search-bar-container">
+                            <h3>Filter By</h3>
+                            <div class = "search_bar">
+                                    <input id ="search_text" type="text" placeholder=" Name, City, Province..." name="search">
+                            </div>
                         </div>
                         <div class="filter_items">
                             <h3 id = "description" >Sort By</h3>
                             <ul>
-                                <li onclick = "sort_selection_has_focused()" id = "province" tabindex="1">
-                                    <i class="fas fa-home"></i>
-                                    <h3>Province</h3>
-                                    
+                                <li id = "location" tabindex="1" >
+                                    <i class="fas fa-search-location"></i>
+                                    <h3>Court Name</h3>
                                 </li>
-                                <li onclick = "sort_selection_has_focused()" id = "city" tabindex="2">
+                                <li id = "city" tabindex="2">
                                     <i class="fas fa-city"></i>
                                     <h3>City</h3>
                                 </li>
-                                <li onclick = "sort_selection_has_focused()" id = "region" tabindex="3" >
-                                    <i class="fas fa-map"></i>
-                                    <h3>Region</h3>
+                                <li id = "province" tabindex="3">
+                                    <i class="fas fa-home"></i>
+                                    <h3>Province</h3>
                                 </li>
                             </ul>
                         </div>
@@ -128,6 +117,13 @@
             </div>
             <div class="criteria-band">
                 <div class="wrapper">
+                    <div class ="crit-content">
+                        <div id = "loc-band"> 
+                            <input type="text" id="loc-txtBox" placeholder="Name, City, Province..">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+
                     <div class ="crit-content" id = "cal-band" >
                         <input type="date" id="date">
                     </div>
@@ -184,25 +180,54 @@
                         <img id = "loc_pic" src="./images/bc1.jpg" alt="">
                     </div>
                 </div>
+                <div id = "review-container" class="review-container">
+                    <div class="review-header">
+                        <div class="review-header-wrap">
+                            <h3>Reviews For El's Court</h3>
+                            <p>3 Reviews</p>
+                        </div>
+                    </div>
+                    <div id = "review-wrapper" class="review-wrapper">
+                        <div class="review-content">
+                            <div class="star-container">
+                                <div class="star-wrap">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="feedback-container">
+                                <h3>By Name 1</h3>
+                                <p>50 million characters here</p>
+                                <h5>01:45 Aug 14, 2020</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class = "mod-det" id = "mod-det" >
                     <div class="loc_container">
                         <div id="det_wrap">
                             <h3 id = "loc_name">Name: </h3>
                             <h3 id = "loc_owner">Owner: </h3>
-                            <h3 id = "loc_reg">Region: </h3>
                             <h3 id = "loc_city">City: </h3>
                             <h3 id = "loc_prov">Province: </h3>
                             <h3 id = "loc_add">Address Here </h3>
                         </div>
-                        <div class="mod-button">
-                            <div class="mod-btn-container">
-                                <div class="btn_create_res">
-                                    <i class="fas fa-check"></i>    
-                                </div>
-                                <div onclick="closeDetModal()" class="btn_cancel_res">
-                                    <i class="fas fa-times"></i>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+                <div class="mod-button">
+                    <div class="mod-btn-container">
+                        <div class="btn_create_res">
+                            <i class="fas fa-check"></i>    
+                        </div>
+                        <div onclick="closeDetModal()" class="btn_cancel_res">
+                            <i class="fas fa-times"></i>
+                        </div>
+                        <div onclick = "openReviews()" class="btn_review">
+                            <i class="far fa-comment-alt"></i>
+                            <p>Reviews</p>
                         </div>
                     </div>
                 </div>
