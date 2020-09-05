@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="css/profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="content">
+        <div class="app-header">
+            <div class="container">
+                <i class="fas fa-bars" onclick = "openNav()"> Menu</i>
+                <img src="images/logo1.png" alt="" class="logo">
+            </div>
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times</a>
+                <a href="dashboard.html"><i class = "fas fa-search-location"> </i> <span>Play</span></a>
+                <a onclick="closeNav()"><i class="fas fa-user-circle"></i> <span>Profile</span></a>
+                <a href="#"><i class = "far fa-calendar-alt"></i><span>Schedules</span></a>
+                <a href="index.html"><i class = "fas fa-power-off"></i> <span>Log Out</span></a>
+            </div>
+        </div>
+        <div class="profile">
+            <div class="profile-wrapper">
+                <div class="profile-header">
+                    <div class="profile-header-wrapper">
+                        <div class="profile-logo-container">
+                            <i class="fas fa-user-circle"></i>
+                            <h5>Honki.Dori05</h5>
+                        </div>
+                        <div class="profile-joined-container">
+                            <i class="far fa-calendar-alt"></i>
+                            <h6>Joined December 2019</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-body">
+                    <div class="profile-detail-container">
+                        <div class="profile-content">
+                            <h3>Name</h3>
+                            <input type="text" id ="Name" placeholder="Name" readonly>
+                        </div>
+                        <div class="profile-content">
+                            <h3>Password</h3>
+                            <input type="password" id ="password" placeholder = "Password" minlength="32" readonly>
+                        </div>
+                        <div class="profile-content">
+                            <h3>Email</h3>
+                            <input type="text" id ="email" placeholder="bigschlong69@longdick.cum" readonly>
+                        </div>
+                        <div class="profile-content">
+                            <h5>Become a Court Owner</h5>
+                        </div>
+                        <div class="profile-content">
+                            <h5>Edit Profile</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/fec759ef55.js" crossorigin="anonymous"></script>
+    <script src = "scripts/profile.js"></script>
+</body>
+</html>

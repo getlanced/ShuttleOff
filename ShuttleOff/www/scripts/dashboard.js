@@ -4,8 +4,6 @@ var slideIndex = 0;
 /*Functions to Initialize*/
 showSlides();
 showDateTime();
-setDateNow();
-
 function showSlides() {
     
     var i;
@@ -15,7 +13,7 @@ function showSlides() {
     }
     slideIndex++;
     if (slideIndex > slides.length) {slideIndex = 1}    
-    slides[slideIndex-1].style.display = "flex";  
+    slides[slideIndex-1].style.display = "block";  
     setTimeout(showSlides, 6000); // Change image every 2 seconds
 }
 function openNav() {
@@ -73,62 +71,38 @@ function openProcTab(){
     loadProcNavContent();
 }
 function closeProcTab(){
-    document.getElementById('proc_nav').style.width = "0";
+    document.getElementById('proc_nav').style.width = "0%";
 }
 function openFilterTab(){
     var x = window.matchMedia('(max-width: 700px)');
     document.getElementById('proc_nav').style.width = "0";
-    if (x.matches){
+    if (x.matches)
         document.getElementById('filter_sidebar').style.width = "100%";
-    }
-    else{
+    else
         document.getElementById('filter_sidebar').style.width = "40%";
-    }
 }
 function closeFilterTab(){
     document.getElementById('filter_sidebar').style.width = "0";
     document.getElementById('proc_nav').style.width = "100%";
 }
-function sort_selection_has_focused()
-{
-    //Filter do something
-    var txtField = document.getElementById("search_text").value;
-    if(txtField == "")
-        alert("Cannot be empty.");
-    else{
-        //Process input
-        closeFilterTab();
-    }
-}
-
 function setDateNow(){
     var d = new Date().toISOString().split('T')[0];
     var x = document.getElementById("date");
-    x.value = d;
-    //Disable Previous dates
-    x.setAttribute('min',d);
 }
-
-function proc_btn_clicked(){
-    //get forms
-    //open proc nav
-}
-
 //Function to capture active element pressed and load all contents related to it
 function checkFocusedPlace (){
     //check element focus
     if(document.activeElement.className == "place")
     {
-        var y = document.getElementById("loc_name");
+        var details = document.getElementsByName("place_details");
         //Load Details Pop Up
-        y.textContent = document.activeElement.children[1].textContent;
-        openDetModal();
+        details[0].value = document.activeElement.children[1].textContent;
 
+        openDetModal();
         //Load Review Content from active element
         loadReviewContent(document.activeElement);
     };
 }
-
 //Create 5 for now
 function loadProcNavContent(){
 
@@ -139,30 +113,77 @@ function loadProcNavContent(){
     for (let i = 0; i< 5; i++ ){
         const newDiv = document.createElement("div");
         newDiv.tabIndex = i;
-        newDiv.id = "place" + i;
         newDiv.className = "place";
         newDiv.setAttribute("onclick", "checkFocusedPlace()");
 
         //Court Image
         const child1 = document.createElement("img");
         child1.src = "../www/images/bc2.jpg";
+        
         //Court Name
         const child2 = document.createElement("h3");
-        child2.textContent = "El" + i + " Court";
+        child2.textContent = "El" + parseInt(Math.random()*100) + " Court";
         
+        //Stars
+        const child3 = document.createElement("div");
+        child3.className = "place-star-container";
+        const child3_1 = document.createElement("div");
+        child3_1.className = "place-star-wrap";
+
+        starDisp(Math.random()*5, child3_1);
+
+        child3.append(child3_1);
+
         newDiv.append(child1);
         newDiv.append(child2);
-                
+        newDiv.append(child3);
+        
         parent.append(newDiv);
     }
 }
+//SortBy courtName and Ratings for now
+function reloadProcNavContent(){
+    var sortBy = document.getElementsByName("sort_crit");
+    var sortBy_selection = "";
+    for (let i = 0; i < sortBy.length; i++) {
+        if(sortBy[i].checked)
+            sortBy_selection = sortBy[i].id;
+    }
 
+    //Save to memory
+    var places = document.getElementsByClassName("place");
+    var places_arr = [].slice.call(places);
+
+    //Clear all contents
+    var parent = document.getElementById("proc_nav_content_wrapper")
+    parent.innerHTML= "";
+    
+    switch (sortBy_selection) {
+        case "location":
+            places_arr.sort(function(a,b){
+                return((a.children[1].textContent).localeCompare(b.children[1].textContent))
+            }
+            )
+            break;
+        case "city":
+            break;
+        
+        case "province":
+            break;
+        default:
+            break;
+    }
+
+    places_arr.forEach(child => {
+        parent.append(child);
+    });
+    closeFilterTab();
+}
 function openDetModal(){
     var x = document.getElementById("modal-result-pop-up");
     x.style.opacity = "1";
     x.style.visibility = "visible";
 }
-
 function closeDetModal(){
     closeReviews();
     var x = document.getElementById("modal-result-pop-up");
@@ -173,7 +194,6 @@ function closeDetModal(){
     var parent = document.getElementById("review-wrapper");
     parent.innerHTML = "";
 }
-
 function openReviews(){
     var x = document.getElementById("review-container");
     if(x.style.width == ""){
@@ -188,7 +208,6 @@ function openReviews(){
     else
         closeReviews();
 }
-
 function closeReviews(){
     var x = document.getElementById("review-container");
     x.style.width = "";
@@ -199,7 +218,6 @@ function closeReviews(){
 
     //Remove Content
 }
-
 function loadReviewContent(x){
     var z = document.getElementsByClassName("review-header-wrap");
     //Court Name from active element x
@@ -216,7 +234,6 @@ function loadReviewContent(x){
         //Need to pass userID into this function, none for now
         //e.g createReviewContent(userID)
 }
-
 //Function to create stars
 function starDisp(num, parent){
     for(let i = 0; i<5; i++)
@@ -241,7 +258,6 @@ function starDisp(num, parent){
         num--;
     }
 }
-
 function createReviewContent(){
 /*Creation of Review Content Template
     <div class="review-wrapper">
@@ -275,7 +291,7 @@ function createReviewContent(){
    var child_1_1 = document.createElement("div");
    child_1_1.className = "star-wrap";
 
-   //Get number of stars through this query 1.5 for now as placeholder
+   //Get number of stars through this query 3.5 for now as placeholder
    starDisp(3.5,child_1_1);
 
    var child_2= document.createElement("div");
@@ -301,4 +317,114 @@ function createReviewContent(){
    child.append(child_2);
 
    parent.append(child);
+}
+function flipRatingSortIcon(){
+    var x = document.getElementsByClassName("sortBox-rating-wrap");
+    if(x[0].children[1].className == "fas fa-sort-amount-down")
+        x[0].children[1].className = "fas fa-sort-amount-up";
+    else
+        x[0].children[1].className = "fas fa-sort-amount-down";
+}
+/*Slider Scripts*/
+var leftInput = document.getElementById("input-left");
+var rightInput = document.getElementById("input-right");
+var thumbLeft = document.querySelector(".thumb.left");
+var thumbRight = document.querySelector(".thumb.right");
+var range = document.querySelector(".range");
+function timeRange(value){
+    value = parseInt(value);
+    if(value > 0 && value < 12){
+        return (value + " AM");
+    }
+    else if(value >12 && value <24){
+        return ((value-12) + " PM");
+    }
+    else if (value == 12)
+        return(value + " PM");
+    else
+        return(12 + " AM");
+}
+function setLeftValue(){
+    var min = parseInt(leftInput.min);
+    var max = parseInt(leftInput.max);
+    leftInput.value = Math.min(parseInt(leftInput.value), parseInt(rightInput.value) - 1);
+    var percent = ((leftInput.value - min) /(max-min))*100;
+    thumbLeft.style.left = percent + "%";
+    range.style.left = percent + "%";
+    
+    if(document.getElementById("exchange_sliders").checked)
+        document.getElementsByClassName("sliderHeader-container")[0].children[2].textContent = "End: " + timeRange(leftInput.value);
+    else
+        document.getElementsByClassName("sliderHeader-container")[0].children[0].textContent = "Start: " + timeRange(leftInput.value);
+    
+    getHours();
+}
+function setRightValue(){
+    var min = parseInt(rightInput.min);
+    var max = parseInt(rightInput.max);
+    rightInput.value = Math.max(parseInt(rightInput.value),parseInt(leftInput.value) + 1);
+    var percent = ((rightInput.value - min) /(max - min)) * 100;
+    thumbRight.style.right = (100 - percent) + "%";
+    range.style.right = (100 - percent) + "%";
+    
+    if(document.getElementById("exchange_sliders").checked)
+        document.getElementsByClassName("sliderHeader-container")[0].children[0].textContent = "Start: " + timeRange(rightInput.value);
+    else
+        document.getElementsByClassName("sliderHeader-container")[0].children[2].textContent = "End: " + timeRange(rightInput.value);
+
+    getHours();
+}
+function flipSliders(){
+    var x = document.getElementsByClassName("sliderHeader-container");
+    var y = document.getElementsByClassName("slider-contents");
+
+    if(document.getElementById("exchange_sliders").checked){
+
+        x[0].children[0].textContent = "Start: " + timeRange(rightInput.value);    
+        x[0].children[2].textContent = "End: " + timeRange(leftInput.value);
+        
+        y[0].children[2].style.backgroundColor = "#006666";
+        y[0].children[3].style.backgroundColor = " #16b1b1";
+    }
+    else{
+        x[0].children[0].textContent = "Start: " + timeRange(leftInput.value);
+        x[0].children[2].textContent = "End: " + timeRange(rightInput.value);;
+
+        y[0].children[3].style.backgroundColor = "#006666";
+        y[0].children[2].style.backgroundColor = " #16b1b1";
+    }
+
+    getHours();
+}
+function getHours(){
+    var x = document.getElementsByClassName("slider");
+    var checked = document.getElementById("exchange_sliders").checked;
+    var hourRange = parseInt(rightInput.value) - parseInt(leftInput.value);
+    if(checked)
+        x[0].children[1].textContent = (24-hourRange) +" "+"Hours";
+    else
+        x[0].children[1].textContent = hourRange +" "+"Hours";
+}
+function setDefaultValues()
+{
+    var sort_crit = document.getElementsByName("sort_crit");
+    sort_crit.forEach(items => {
+        items.checked = false;
+    });
+
+    var players = document.getElementsByName("players");
+    players.forEach(items => {
+        items.checked = false;
+    });
+
+    document.getElementById("exchange_sliders").checked = false;
+    flipSliders();
+
+    var dt = new Date();
+    leftInput.value = dt.getHours() + 1;
+    setLeftValue();
+
+    rightInput.value = leftInput + 1;
+    setRightValue();
+
 }
