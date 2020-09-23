@@ -1,3 +1,6 @@
+//Onload functions
+setProvinces();
+
 function openNav(){
     var x = document.getElementById("mySidenav");
     x.style.width = "260px";
@@ -29,7 +32,14 @@ function closeChangePassPanel(){
     x.style.width = "0%";
 }
 
-function loadProvincesCitiesDict(){
+function loadProvinces(){
+    //parsed json data here
+    var provinces = ["Bulacan", "Cavite","Laguna","NCR","Pampanga","Rizal","Tarlac"]
+
+    return provinces;
+}
+
+function loadCitiesByProvince(){
     //parsed json data here
     var CitiesByProvince = {
         Bulacan: ["Malolos", "Meycauayan"],
@@ -41,26 +51,53 @@ function loadProvincesCitiesDict(){
         Tarlac: ["Tarlac"]
     }
 
-    return CitiesByProvince
+    return CitiesByProvince;
 }
 
+/*
 function resetSelection() {
     document.getElementById("province").selectedIndex = 0;
     document.getElementById("city").selectedIndex = 0;
 }
+*/
+
+function setProvinces(){
+    var information = document.getElementsByName("information");
+    var new_option = document.createElement("option");
+    var provinces = loadProvinces();
+
+    information[4].innerHTML = ""; //Clear Contents
+    new_option.value = "";
+    new_option.textContent = "None"; 
+    information[4].appendChild(new_option);    
+    delete new_option; //Destroy
+    /*
+    <select>
+        <option>None<option> <--untouched 
+    <select> 
+    */
+    for (let i = 1; i < provinces.length; i++) {
+        new_option = document.createElement("option");
+        new_option.value = provinces[i];
+        new_option.textContent = provinces[i];
+        information[4].appendChild(new_option);
+        delete new_option;
+    }
+}
 
 function setCities() {
     
-    CitiesByProvince = loadProvincesCitiesDict();
-
-    provinceSel = document.getElementById("province").value;
-    
-    if (provinceSel.length == 0) document.getElementById("city").innerHTML = "<option></option>";
+    var CitiesByProvince = loadCitiesByProvince();
+    var information = document.getElementsByName("information");
+    var provinceSel = information[4].value;
+    if (provinceSel == 0) {
+        information[5].innerHTML = "<option>None</option>"
+    }
     else {
         var citiesOptions = "";
         for (cityId in CitiesByProvince[provinceSel]) {
             citiesOptions += "<option>" + CitiesByProvince[provinceSel][cityId] + "</option>";
         }
-        document.getElementById("city").innerHTML = citiesOptions;
+        information[5].innerHTML = citiesOptions;
     }
 }

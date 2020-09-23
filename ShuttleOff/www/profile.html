@@ -36,34 +36,39 @@
                         <div class="edit-profile-acc-info">
                             <div class="edit-profile-acc-info-wrapper">
                                 <h2>ACCOUNT INFORMATION</h2>
+                                <!-- information[0] -->
                                 <div class="profile-info">
                                     <h4>First Name</h4>
                                     <input type="text" name = "information">
                                 </div>
-
+                                <!-- information[1] -->
                                 <div class="profile-info">
                                     <h4>Middle Name</h4>
                                     <input type="text" name = "information">
                                 </div>
-
+                                <!-- information[2] -->
                                 <div class="profile-info">
                                     <h4>Last Name</h4>
                                     <input type="text" name = "information">
                                 </div>
-
+                                <!-- information[3] -->
                                 <div class="profile-info">
                                     <h4>Email Address</h4>
                                     <input type="text" name = "information">
                                 </div>
-
+                                <!-- information[4] -->
                                 <div class="profile-info">
                                     <h4>Province</h4>
-                                    <input placeholder = "None" type="text" name = "information">
+                                    <select name="information" onchange="setCities()">
+                                        <!-- <option value="">None</option> -->
+                                    </select>
                                 </div>
-                                
+                                <!-- information[5] -->
                                 <div class="profile-info">
                                     <h4>City</h4>
-                                    <input placeholder = "None" type="text" name = "information">
+                                    <select name="information">
+                                        <option value="">None</option>
+                                    </select>
                                 </div>
 
                                 <h5 id = "reset_fields">Reset Fields</h5>
