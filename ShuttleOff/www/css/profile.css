@@ -272,7 +272,7 @@ body
     width: 0;
     z-index: 1;
     overflow: hidden;
-    transition: 0.3s ease-out;
+    transition: 0.3s linear;
 }
 
 .edit-profile-wrapper{
@@ -296,7 +296,7 @@ body
     height: 100%;
     align-items: center;
     justify-items: center;
-    background-color: #068a8a;
+    background-color: var(--primary-color);
     color: whitesmoke;
 }
 
@@ -323,7 +323,7 @@ body
     position: absolute;
     top: 5%;
     width: 100%;
-    height: 90%;
+    height: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -338,13 +338,14 @@ body
 
 .profile-info{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
     padding: 10px;
 }
 
 .profile-info>input{
     border-style: none;
+    width: 100%;
     border-bottom: 1px solid var(--primary-color);
     background-color: transparent;
     outline: none;
@@ -365,14 +366,130 @@ body
 }
 
 .edit-profile-acc-info-wrapper > h5{
-    text-align: center;
-    color: red;
+    text-align: left;
+    cursor: pointer;
+    padding-bottom: 0.6rem;
+    padding-left:10px;
+    transition: 0.3s ease-in;
+}
+
+#reset_fields{
+    padding-top: 1rem;
+    color: var(--primary-color);
+}
+#chng_pass{
+    color: var(--primary-color);
+}
+#sav_chngs{
+    color: grey;
     cursor: pointer;
 }
 
-#sav_chngs{
-    color: grey;
-    padding: 1rem;
-    transition: 0.3s ease-in;
+#del_acc{
+    color: red;
+}
+
+.changepass-panel{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: var(--secondary-color);
+    z-index: 1;
+    overflow: hidden;
+    width: 0%;
+    transition: 0.3s linear;
+}
+
+.changepass-header{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 5%;
+}
+
+.changepass-header-wrap{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: whitesmoke;
+}
+
+.changepass-header-wrap > h1{
+    height: 100%;
+    width: 10%;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0.65rem 1rem;
+}
+
+.changepass-header-wrap > h3{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.changepass-body{
+    position: absolute;
+    top: 5%;
+    left: 0;
+    width: 100%;
+    height: 95%;
+}
+
+.changepass-body-wrap{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.pass-info{
+    padding: 1rem 2rem 0 2rem;
+    max-width: 450px;
+    width: 100%;
+    color: var(--primary-color);
+}
+
+.pass-info > input{
+    border-style: none;
+    width: 100%;
+    border-bottom: 1px solid var(--primary-color);
+    background-color: transparent;
+    outline: none;
+    transition: 0.3s ease-in;
+}
+
+.pass-info > input:focus{
+    -webkit-box-shadow:0 1px 0 #024747;
+    -moz-box-shadow:0 1px 0 #024747;
+    box-shadow:0 1px 0 #234141;
+}
+.changepass-body-wrap > h5
+{
+    padding: 0.7rem 2rem 0 2rem;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 0.8rem;
+}
+#chng_pass_confirm{
+    color: var(--primary-color);
+}
+#chng_pass_confirm:hover{
+    color: #033838;
+}
+#chng_pass_cancel{
+    color: red;
+}
+
+#chng_pass_cancel:hover{
+    color: rgb(201, 16, 16);
 }

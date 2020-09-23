@@ -24,6 +24,7 @@
         </div>
         <div class="profile">
             <div class="profile-wrapper">
+                <!-- Edit Profile Panel -->
                 <div class = "edit-profile" id = "edit-profile">
                     <div class="edit-profile-wrapper">
                         <div class="edit-profile-header">
@@ -41,6 +42,11 @@
                                 </div>
 
                                 <div class="profile-info">
+                                    <h4>Middle Name</h4>
+                                    <input type="text" name = "information">
+                                </div>
+
+                                <div class="profile-info">
                                     <h4>Last Name</h4>
                                     <input type="text" name = "information">
                                 </div>
@@ -51,29 +57,51 @@
                                 </div>
 
                                 <div class="profile-info">
+                                    <h4>Province</h4>
+                                    <input placeholder = "None" type="text" name = "information">
+                                </div>
+                                
+                                <div class="profile-info">
                                     <h4>City</h4>
-                                    <input type="text" name = "information">
+                                    <input placeholder = "None" type="text" name = "information">
                                 </div>
 
-                                <div class="profile-info">
-                                    <h4>Province</h4>
-                                    <input type="text" name = "information">
-                                </div>
-                                <h2>CHANGE PASSWORD</h2>
-                                <div class="profile-info">
-                                    <h4>New Password</h4>
-                                    <input type="password" name = "password">
-                                </div>
-                                <div class="profile-info">
-                                    <h4>Confirm Password</h4>
-                                    <input type="password" name = "password">
-                                </div>
+                                <h5 id = "reset_fields">Reset Fields</h5>
                                 <h5 id = "sav_chngs">Save Changes</h5>
+                                <h5 onclick = "openChangePassPanel()" id = "chng_pass">Change Password</h5>
                                 <h5 id = "del_acc" >Delete Account</h5>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- Change Password Panel -->
+                <div id = "changepass-panel" class="changepass-panel">
+                    <div class="changepass-header">
+                        <div class="changepass-header-wrap">
+                            <h1 onclick = "closeChangePassPanel()" >&times</h1>
+                            <h3>CHANGE PASSWORD</h3>
+                        </div>
+                    </div>
+                    <div class="changepass-body">
+                        <div class="changepass-body-wrap">
+                            <div class="pass-info">
+                                <h4>Current Password</h4>
+                                <input type="password" name = "password">
+                            </div>
+                            <div class="pass-info">
+                                <h4>New Password</h4>
+                                <input type="password" name = "password">
+                            </div>
+                            <div class="pass-info">
+                                <h4>Confirm Password</h4>
+                                <input type="password" name = "password">
+                            </div>
+                            <h5 id = "chng_pass_confirm">Confirm</h5>
+                            <h5 onclick = "closeChangePassPanel()" id = "chng_pass_cancel" >Cancel</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Main Profile Body -->
                 <div class="profile-header">
                     <div class="profile-header-wrapper">
                         <div class="profile-logo-container">
