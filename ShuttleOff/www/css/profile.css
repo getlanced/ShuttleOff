@@ -269,10 +269,10 @@ body
 .edit-profile{
     position: absolute;
     height: 100%;
-    width: 100%;
+    width: 0;
     z-index: 1;
     overflow: hidden;
-    transition: 0.3s linear;
+    transition: 0.3s ease-out;
 }
 
 .edit-profile-wrapper{
