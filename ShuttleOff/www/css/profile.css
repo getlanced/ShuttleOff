@@ -126,12 +126,12 @@ body
     opacity: 0.6;
 }
 
+/*Profile Tab*/
 .profile{
     position: absolute;
     top: 8%;
     height: 92%;
     width: 100%;
-    
 }
 
 .profile-wrapper{

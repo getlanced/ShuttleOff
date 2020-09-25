@@ -66,10 +66,10 @@ function setProvinces(){
     var new_option = document.createElement("option");
     var provinces = loadProvinces();
 
-    information[4].innerHTML = ""; //Clear Contents
+    information[3].innerHTML = ""; //Clear Contents
     new_option.value = "";
     new_option.textContent = "None"; 
-    information[4].appendChild(new_option);    
+    information[3].appendChild(new_option);    
     delete new_option; //Destroy
     /*
     <select>
@@ -80,7 +80,7 @@ function setProvinces(){
         new_option = document.createElement("option");
         new_option.value = provinces[i];
         new_option.textContent = provinces[i];
-        information[4].appendChild(new_option);
+        information[3].appendChild(new_option);
         delete new_option;
     }
 }
@@ -89,15 +89,15 @@ function setCities() {
     
     var CitiesByProvince = loadCitiesByProvince();
     var information = document.getElementsByName("information");
-    var provinceSel = information[4].value;
+    var provinceSel = information[3].value;
     if (provinceSel == 0) {
-        information[5].innerHTML = "<option>None</option>"
+        information[4].innerHTML = "<option>None</option>"
     }
     else {
         var citiesOptions = "";
         for (cityId in CitiesByProvince[provinceSel]) {
             citiesOptions += "<option>" + CitiesByProvince[provinceSel][cityId] + "</option>";
         }
-        information[5].innerHTML = citiesOptions;
+        information[4].innerHTML = citiesOptions;
     }
 }
