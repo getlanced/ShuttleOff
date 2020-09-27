@@ -131,7 +131,7 @@ body{
 {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 92%;
     top: 8%;
 }
 
@@ -200,81 +200,79 @@ body{
     width: 100%;
     height: 100%;
     position: absolute;
-    transition: 0.2s ease-out;
-    background-color: var(--secondary-color);
+    transition: 0.3s ease-out;
+    background-color: #cff1f1;
 }
 
 .pane1-wrap{
-    position: relative;
-    display: flex;
     width: 100%;
-    flex-direction: column;
     height: 100%;
-    background-color: #cff1f1;
+    position: relative;
+
+    overflow-x: hidden;
     overflow-y: scroll;
 }
 
 .pane1-content{
     width: 100%;
-    height: 11.875%; /*Initial Height*/
-    overflow: hidden;
+    height: 11.875%;
+    background-color: var(--secondary-color);
+    position: relative;
+
     outline: none;
     border: none;
-    padding: 0.3rem 0.3rem 0 0.3rem;
-    color: var(--primary-color);
-    transition: 0.3s ease-out;
+
+    padding: 0.5rem 0 0 0.5rem;
+    margin: 0.5rem 0 0 0.5rem;
+
+    cursor: pointer;
 }
 
 .pane1-content-wrap{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-color: var(--secondary-color);
-}
-
-.court-details{
-    position: absolute;
     display: flex;
-    top: 0;
-    left: 0;
+    flex-direction: column;
     width: 100%;
     height: 100%;
-    flex-direction: column;
-    align-items: flex-start;
     justify-content: space-evenly;
-    transition: 0.3s ease-out;
-    outline: none;
-    border: none;
-    padding-left: 0.5rem;
-    overflow: scroll;
+    color: var(--primary-color);
 }
 
-.court-details ~ span{
+.pane1-content-wrap > span{
     position: absolute;
+    height: 100%;
+    width: 20%;
     top: 0;
     right: 0;
     left: 100%;
-    height: 100%;
-    width: 40%;
-    background-color: #0d6e6e;
-    cursor: pointer;
+
     display: flex;
+    background-color: var(--primary-color);
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
+
     transition: 0.3s ease-out;
 }
 
-.court-details ~ span > i{
-    display: flex;
+.pane1-content-wrap > span > i{
     color: whitesmoke;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    height: 100%;
+    cursor: pointer;
 }
-.pane1-content:focus .pane1-content-wrap > span{
-    left: 60%;
+
+.pane1-content:focus > .pane1-content-wrap > span{
+    left: 80%;
+}
+
+.court-address{
+    display: none;
+    padding-left: 0.5rem;
+    background-color: whitesmoke;
+    color: var(--primary-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 0.5rem;
+}
+
+.pane1-content:focus + .court-address{
+    display: block;
 }
 
 #pane2{
@@ -283,78 +281,60 @@ body{
     position: absolute;
     transition: 0.3s ease-out;
     transform: translate(100%,0);
-    background-color: var(--secondary-color);
+    background-color: #cff1f1;
 }
 
 .pane2-wrap{
-    position: relative;
-    display: flex;
     width: 100%;
-    flex-direction: column;
     height: 100%;
-    background-color: #cff1f1;
+    position: relative;
+
+    overflow-x: hidden;
     overflow-y: scroll;
+    
 }
 
 .pane2-content{
     width: 100%;
-    height: 11.875%; /*Initial Height*/
-    overflow: hidden;
+    height: 11.875%;
+    background-color: var(--secondary-color);
+    position: relative;
+
     outline: none;
     border: none;
-    padding: 0.3rem 0.3rem 0 0.3rem;
-    color: var(--primary-color);
-    transition: 0.3s ease-out;
+
+    padding: 0.5rem 0 0 0.5rem;
+    margin: 0.5rem 0 0 0.5rem;
+
+    cursor: pointer;
 }
 
 .pane2-content-wrap{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-color: var(--secondary-color);
-}
-
-.court-history{
-    position: absolute;
     display: flex;
-    top: 0;
-    left: 0;
+    flex-direction: column;
     width: 100%;
     height: 100%;
-    flex-direction: column;
-    align-items: flex-start;
     justify-content: space-evenly;
-    transition: 0.3s ease-out;
-    outline: none;
-    border: none;
+    color: var(--primary-color);
+}
+.court-address{
+    display: none;
     padding-left: 0.5rem;
-    overflow: scroll;
+    background-color: whitesmoke;
+    color: var(--primary-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 0.5rem;
 }
 
-.court-history ~ span{
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 100%;
-    height: 100%;
-    width: 20%;
-    background-color: #0d6e6e;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: 0.3s ease-out;
+.pane2-content:focus + .court-address{
+    display: block;
 }
 
-.court-history ~ span > i{
+.empty-pane{
     display: flex;
-    color: whitesmoke;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 100%;
-    height: 100%;
-}
-.pane2-content:focus .pane2-content-wrap > span{
-    left: 80%;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-color);
 }
