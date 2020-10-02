@@ -175,12 +175,12 @@ addSchedBtn[0].onclick = function (){
     const btnBar = document.querySelector(".change-btn-bar");
     const editHeader = document.querySelector(".crt-edit-header"); 
     const topMenu = document.querySelector(".btn-container");
-    
+
     if(btnBar.style.bottom == "-15%" && editHeader.style.top == "-10%"){
         btnBar.style.bottom = "0";
         editHeader.style.top = "0";
     }
-    if(topMenu.style.top == "1%")
+    if( topMenuBtns[1].checked && topMenu.style.top == "1%")
         topMenu.style.top = "8%";
 };
 
