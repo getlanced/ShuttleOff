@@ -174,11 +174,14 @@ addSchedBtn[0].onclick = function (){
 
     const btnBar = document.querySelector(".change-btn-bar");
     const editHeader = document.querySelector(".crt-edit-header"); 
+    const topMenu = document.querySelector(".btn-container");
     
     if(btnBar.style.bottom == "-15%" && editHeader.style.top == "-10%"){
         btnBar.style.bottom = "0";
         editHeader.style.top = "0";
     }
+    if(topMenu.style.top == "1%")
+        topMenu.style.top = "8%";
 };
 
 /* <===================== Dynamic Element Helpers ========================>*/
@@ -331,4 +334,7 @@ function listSchedules(){
     btnBar.style.bottom = "-15%";
     const editHeader = document.querySelector(".crt-edit-header");
     editHeader.style.top = "-10%";
+
+    const topMenu = document.querySelector(".btn-container");
+    topMenu.style.top = "1%";
 }
