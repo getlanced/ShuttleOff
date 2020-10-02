@@ -1,4 +1,5 @@
-//Non Dynamic Elements Helpers
+/*<===================== Non Dynamic Element Helpers ========================>*/
+
 //Top menu panes
 const topMenuBtns = document.getElementsByClassName("rad");
 const topMenuPanes = document.getElementsByClassName("pane");
@@ -50,7 +51,9 @@ for(let i = 0; i< 24; i++){
 /*Province & Cities Drop Down Boxes */
 setProvinces();
 var information = document.getElementsByName("information");
-information[1].oninput =  function (){
+information[1].onchange = setCities;
+
+function setCities(){
     var information = document.getElementsByName("information");
     var citiesByProvince = loadCitiesByProvince();
     var provinceSel = information[1].value;
@@ -64,7 +67,8 @@ information[1].oninput =  function (){
         }
         information[2].innerHTML = citiesOptions;
     }
-}  
+} 
+
 function loadProvinces(){
     //parsed json data here
     var provinces = ["Bulacan", "Cavite","Laguna","NCR","Pampanga","Rizal","Tarlac"];
@@ -85,12 +89,6 @@ function loadCitiesByProvince(){
 
     return CitiesByProvince;
 }
-/*
-function resetSelection() {
-    document.getElementById("province").selectedIndex = 0;
-    document.getElementById("city").selectedIndex = 0;
-}
-*/
 
 function setProvinces(){
     var information = document.getElementsByName("information");
@@ -116,7 +114,6 @@ function setProvinces(){
     }
 }
 
-//Helper Functions
 function openNav(){
     var x = document.getElementById("mySidenav");
     x.style.width = "260px";
@@ -127,17 +124,48 @@ function closeNav(){
     x.style.width = "0";
 }
 
+//Clear Add New Pane Tab
+topMenuBtns[1].addEventListener("click",function(){
+    resetDetailsPane();
+    resetSchedulesPane();
+}
+)
 
+function resetDetailsPane(){
+    var information = document.getElementsByName("information");
+    information[0].value = "";
+    information[1].value = "NCR";
+    setCities();
+    information[3].value = "2";
+    information[4].value = "";
+    information[5].value = "";
+}
+
+function resetSchedulesPane(){
+    var myCourtSchedulesParent = document.querySelector(".sched-pane");
+    myCourtSchedulesParent.innerHTML = "";
+    myCourtSchedulesParent.innerHTML = "<h3 style=\"padding-top: 0.5rem;\">No Schedules Added Yet</h3><div onclick = \"listSchedules()\"id = \"addSched\" class=\"add-circle-container\"><i class=\"fas fa-plus-circle\" id = \"schedAdd\"></i></div>";
+    courtEditMenuBtn[0].checked = true;
+    courtEditMenuPanes[0].style.left = "0";
+    courtEditMenuPanes[1].style.left = "100%";
+    courtEditMenuPanes[2].style.left = "200%"
+}
+
+//Discard Button
 const changeButtons = document.querySelectorAll(".chg-btn");
 changeButtons[0].onclick = function(){
 
     const topMenu = document.querySelector(".btn-container");
+    const topMenuIndicator = document.getElementById("indicator");
     if(topMenu.style.top == "1%")
         topMenu.style.top = "8%";
     topMenuPanes[0].style.left = "0";
     topMenuPanes[1].style.left = "100%";
+
+    topMenuBtns[0].checked = true;
 };
 
+//Availability Pane Buttons
 var addSchedBtn = document.getElementsByClassName("av-btn");
 addSchedBtn[0].onclick = function (){
     courtEditMenuPanes[0].style.left = "-100%";
@@ -153,20 +181,25 @@ addSchedBtn[0].onclick = function (){
     }
 };
 
-//Onload Functions parsing test
+/* <===================== Dynamic Element Helpers ========================>*/
+//Grab all courtData from query(test)
+var myCourts = loadMyCourts();
+
+//List All Courts
 setMyCourts();
+
 function loadMyCourts(){
     
     //Sample query size of all active reservations 
-    //(Change this to test courts added)
-    let queryLength = 0;
+    //(Change these to test courts added)
+    let queryLength = 4;
+    //let scheduleQueryLength = 1;
 
     //Array to store each dictionary object
     var myCourts = [];
 
     //Loading courtData object to myCourts array
     for (let i = 0; i< queryLength; i++ ){
-
         //load court data format here, dictionary sample per object
         var courtData = {
             crtId : 0,
@@ -174,28 +207,39 @@ function loadMyCourts(){
             courtName : "",
             crtProvince: "",
             crtCity: "",
-            crtCap: 0,
+            crtCap: 5,
             crtAdd: "",
             crtDesc: "",
-            crtSched: {
-                schedId: "",
-                schedTime: "",
-                schedDays: []
-            },
+            crtSched:[]
         }
         //Test Values
         courtData.crtId = i;
         courtData.userId = i;
         courtData.courtName = "Hilly's - Public Court No." + i;
         courtData.crtProvince = "NCR";
-        courtData.crtCity = "Makati",
-        courtData.crtCap = 8,
-        courtData.crtAdd = "Lorem Ipsum",
-        courtData.crtDesc = "Lorem Ipsum",
+        courtData.crtCity = "Manila";
+        courtData.crtCap = 8;
+        courtData.crtAdd = "Lorem Ipsum";
+        courtData.crtDesc = "Lorem Ipsum";
 
-        courtData.crtSched.schedId = i;
-        courtData.crtSched.schedTime = "10PM -11PM";
-        courtData.crtSched.schedDays = ["TUE", "THU"];
+        //Schedules per court
+        //for(let j = 0; j < scheduleQueryLength; j++){
+        for(let j = 0; j < Math.random()*6 + 1; j++){    
+            //Schedule Object
+            var schedDetails = {
+                schedId: "",
+                schedTime: "",
+                schedDays: []
+                }
+            
+            schedDetails.schedId = j;
+            schedDetails.schedTime = "2PM -3PM";
+            schedDetails.schedDays = ["TUE", "THU", "WED"];
+
+            //Append to crtSched property
+            courtData.crtSched.push(schedDetails);
+        }
+
         myCourts[i] = courtData;
     }
 
@@ -203,11 +247,9 @@ function loadMyCourts(){
 }
 
 function setMyCourts(){
-
-    var myCourts = loadMyCourts();
     //My Courts Pane
     const myCourtParent = document.querySelector(".crt-lst");
-    
+    const myCourtSchedulesParent = document.querySelector(".sched-pane");
 
     if(myCourts.length != 0)
     {
@@ -223,27 +265,64 @@ function setMyCourts(){
                     i + "\"class=\"crt-lst-cnt\"><div class=\"crt-lst-cnt-wrp\"><span class = \"crt-lst-num\">"+ 
                     i + "</span><div class=\"crt-det\"><h3>" +
                     myCourts[i].courtName +"</h3><h4>Status:<span>&nbsp;"+
-                    status + "</span></h4></div><span class = \"edit-btn slide-menu\"><i class=\"fas fa-tools\"></i></span><span class = \"trash-btn slide-menu\"><i class=\"fas fa-trash-alt\"></i></span></div></div>";
+                    status + "</span></h4></div><span onclick = \"CourtEdit()\" class = \"edit-btn slide-menu\"><i class=\"fas fa-tools\"></i></span><span class = \"trash-btn slide-menu\"><i class=\"fas fa-trash-alt\"></i></span></div></div>";
         }
     }
 }
 
-//Dynamic Element Helpers
+function setCourtSchedules(courtPos){
 
+    //Loads Schedules Based on focused court element
+
+    var myCourtSchedulesParent = document.querySelector(".sched-pane");
+    if(myCourts[courtPos].crtSched.length != 0){
+        myCourtSchedulesParent.innerHTML = "";
+        
+        for(let j = 0; j< myCourts[courtPos].crtSched.length; j++){
+            myCourtSchedulesParent.innerHTML += "<div tabIndex = \""+ 
+            j +"\" class=\"crt-sched\"><div class=\"crt-sched-wrap\"><span class = \"crt-sched-num\">" + 
+            j +"</span><div class=\"crt-sched-det\"><h4>Time:&nbsp;"+
+            myCourts[courtPos].crtSched[j].schedTime+"</h4><h5>"+
+            myCourts[courtPos].crtSched[j].schedDays.join(" ") +"</h5></div><span class = \"crt-sched-opt crt-sched-edit\"><i class=\"fas fa-tools\"></i></span><span class = \"crt-sched-opt crt-sched-del\" ><i class=\"fas fa-trash-alt\"></i></span></div></div>";
+        }
+
+        //Add button Container at the end of Court Schedule
+        myCourtSchedulesParent.innerHTML += "<div onclick = \"listSchedules()\"class=\"add-circle-container\">\<i class=\"fas fa-plus-circle\" id = \"schedAdd\"></i>\</div>";
+    }
+}
+
+function setCourtDetails(courtPos){
+    var courtDetails = document.getElementsByName("information");
+
+    courtDetails[0].value = myCourts[courtPos].courtName;
+    courtDetails[1].value = myCourts[courtPos].crtProvince;
+    //Reload Cities based on province
+    setCities();
+    courtDetails[2].value = myCourts[courtPos].crtCity;
+    courtDetails[3].value = myCourts[courtPos].crtCap;
+    courtDetails[4].value = myCourts[courtPos].crtAdd;
+    courtDetails[5].value = myCourts[courtPos].crtDesc;
+}
 //My Court Edit Button
-const editCourtBtn = document.querySelectorAll(".edit-btn");
-for(let i = 0; i< editCourtBtn.length; i++){
-    editCourtBtn[i].addEventListener( "click", function(){
-        const topMenu = document.querySelector(".btn-container");
-        topMenu.style.top = "1%";
-        topMenuPanes[0].style.left = "-100%";
-        topMenuPanes[1].style.left = "0";
-    });
+function CourtEdit()
+{
+    const topMenu = document.querySelector(".btn-container");
+    topMenu.style.top = "1%";
+    topMenuPanes[0].style.left = "-100%";
+    topMenuPanes[1].style.left = "0";
+
+    //Each myCourts index corresponds to each element in My Courts List's index in memory
+    var courtPos = document.activeElement.children[0].children[0].textContent;
+    //Load Details
+    setCourtDetails(parseInt(courtPos));
+    //Load Schedules 
+    setCourtSchedules(parseInt(courtPos));
 }
 
 //Add Court Sched Button
-var addSched = document.getElementById("schedAdd");
-addSched.onclick = function(){
+var addSched = document.querySelector("#schedAdd");
+addSched.addEventListener("click", listSchedules);
+function listSchedules(){
     courtEditMenuPanes[0].style.left = "-200%";
     courtEditMenuPanes[1].style.left = "-100%";
     courtEditMenuPanes[2].style.left = "0";

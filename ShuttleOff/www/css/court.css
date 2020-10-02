@@ -389,7 +389,7 @@ body{
     opacity: 0;
 }
 
-.user-cap{
+.schedules{
     left: 50%;
 }
 
@@ -397,7 +397,7 @@ body{
     color:  #9bbdbd;
 }
 
-.user-cap[type = 'radio']:checked + span > i{
+.schedules[type = 'radio']:checked + span > i{
     color:  #9bbdbd;
 }
 
@@ -415,8 +415,6 @@ body{
     width: 100%;
     height: 100%;
     display: flex;
-
-    overflow: hidden;
 }
 
 .crt-edit-p{
@@ -432,6 +430,7 @@ body{
 
 .crt-edit-p2{
     left: 100%;
+    background-color: #cff1f1;
 }
 
 .add-circle-container{
@@ -698,7 +697,7 @@ body{
     bottom: 0;
     position: absolute;
 
-    background-color: #cff1f1;
+    background-color: var(--secondary-color);
 
     transition: 0.1s ease-out;
 }
