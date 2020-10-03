@@ -85,10 +85,6 @@ function closeFilterTab(){
     document.getElementById('filter_sidebar').style.width = "0";
     document.getElementById('proc_nav').style.width = "100%";
 }
-function setDateNow(){
-    var d = new Date().toISOString().split('T')[0];
-    var x = document.getElementById("date");
-}
 //Function to capture active element pressed and load all contents related to it
 function checkFocusedPlace (){
     //check element focus
